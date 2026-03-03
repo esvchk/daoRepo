@@ -4,8 +4,10 @@ import com.academy.course.connection.Connector;
 import com.academy.course.dto.Car;
 
 import java.io.Serializable;
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class CarDaoImpl implements CarDao {
 
@@ -28,7 +30,18 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public Car get(Serializable id) throws SQLException {
-        return null;
+        Car car = new Car();
+        try (Connection connection = Connector.getConnection();
+             Statement statement = connection.createStatement()){
+            try (ResultSet rs = statement.executeQuery("SELECT * FROM car WHERE id = " + id )){
+                while (rs.next()){
+                    car.setId(rs.getInt(1));
+                    car.setType(rs.getString(2));
+                    car.setName(rs.getString("name"));
+                }
+            }
+        }
+        return car;
     }
 
     @Override

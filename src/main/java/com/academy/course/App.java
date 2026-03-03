@@ -11,8 +11,11 @@ public class App
     public static void main( String[] args ) throws SQLException {
         CarDao carDao = new CarDaoImpl();
         Car car = new Car();
-        car.setName("mercedes");
-        car.setType("vito");
-        System.out.println(carDao.save(car).getId());
+        car.setName("vito");
+        car.setType("mercedes1");
+        Car save = carDao.save(car);
+//        System.out.println(save.getId());
+        Car car1 = carDao.get(save.getId());
+        System.out.println(car1);
     }
 }
