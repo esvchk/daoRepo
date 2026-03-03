@@ -1,7 +1,7 @@
 package com.academy.course.dto;
 
 public class Car {
-    private int id;
+    private long id;
     private String name;
     private String type;
 
@@ -9,11 +9,11 @@ public class Car {
     }
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -1,16 +1,29 @@
 package com.academy.course.dao;
 
+import com.academy.course.connection.Connector;
 import com.academy.course.dto.Car;
 
 import java.io.Serializable;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 
-public class CarDaoImpl implements CarDao{
+public class CarDaoImpl implements CarDao {
 
 
     @Override
     public Car save(Car car) throws SQLException {
-        return null;
+        try (Connection connection = Connector.getConnection();
+             Statement stmt = connection.createStatement()) {
+            stmt.executeUpdate("INSERT INTO car " +
+                    "(name,type) " +
+                    "VALUES('" + car.getName() + "','" + car.getType() + "')",
+                    Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            long primaryKey = rs.getLong(1);
+            car.setId(primaryKey);
+        }
+        return car;
     }
 
     @Override
