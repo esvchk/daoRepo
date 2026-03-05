@@ -6,13 +6,13 @@ import com.academy.course.dto.Car;
 
 import java.sql.SQLException;
 
-public class App
-{
-    public static void main( String[] args ) throws SQLException {
+public class App {
+    public static void main(String[] args) throws SQLException {
         CarDao carDao = new CarDaoImpl();
-        Car car = new Car();
-        car.setName("vito");
-        car.setType("mercedes1");
+        Car car = Car.builder()
+                .name("vito")
+                .type("mercedes")
+                .build();
         Car save = carDao.save(car);
 //        System.out.println(save.getId());
         Car car1 = carDao.get(save.getId());
