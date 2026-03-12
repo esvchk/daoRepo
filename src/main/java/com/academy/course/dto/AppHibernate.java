@@ -31,6 +31,8 @@ public class AppHibernate {
         session.save(carNew);
         Car carDb = session.get(Car.class, carNew.getId());
         System.out.println(carDb);
+        session.saveOrUpdate(carNew);
+        session.delete(carNew);
         session.getTransaction().commit();
 
 
