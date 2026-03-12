@@ -14,6 +14,12 @@ public class AppHibernate {
                 .type("Toyota")
                 .build();
         EntityManager em = HibernateUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(car);
+        car.setType("Toyota new");
+        em.merge(car);
+        em.getTransaction().commit();
+
 
 
         Car carNew = Car.builder()
@@ -27,11 +33,8 @@ public class AppHibernate {
         System.out.println(carDb);
         session.getTransaction().commit();
 
-//        em.getTransaction().begin();
-//        em.persist(car);
-//        em.getTransaction().commit();
-//        em.close();
 
+        em.close();
         HibernateUtil.close();
     }
 }
