@@ -20,7 +20,7 @@ public class CarDaoImpl implements CarDao {
                     Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
-            long primaryKey = rs.getLong(1);
+            int primaryKey = rs.getInt(1);
             car.setId(primaryKey);
         }
         return car;
