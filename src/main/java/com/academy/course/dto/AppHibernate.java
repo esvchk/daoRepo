@@ -1,7 +1,7 @@
+
 package com.academy.course.dto;
 
 import com.academy.course.HibernateUtil;
-import com.sun.net.httpserver.BasicAuthenticator;
 import org.hibernate.Session;
 
 
@@ -30,7 +30,10 @@ public class AppHibernate {
         session.getTransaction().begin();
         session.save(carNew);
         Car carDb = session.get(Car.class, carNew.getId());
+        Car carDbLoad = session.load(Car.class,carNew.getId());
         System.out.println(carDb);
+        carDb.setType("new");
+        session.refresh(carDb);
         session.saveOrUpdate(carNew);
         session.delete(carNew);
         session.getTransaction().commit();
