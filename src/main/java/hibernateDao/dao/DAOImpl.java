@@ -12,9 +12,9 @@ import java.io.Serializable;
 public class DAOImpl<T> implements DAO<T> {
     private final Session session = HibernateSession.getSession();
     private final Transaction transaction = session.getTransaction();
-    Class<?> entityClass;
+    Class<T> entityClass;
 
-    public DAOImpl(Class<?> entityClass) {
+    public DAOImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
@@ -37,7 +37,7 @@ public class DAOImpl<T> implements DAO<T> {
         T t = null;
         try {
             transaction.begin();
-            t = (T) session.get(entityClass,id);
+            t = session.get(entityClass,id);
             transaction.commit();
         } catch (HibernateException e){
             transaction.rollback();
@@ -65,7 +65,7 @@ public class DAOImpl<T> implements DAO<T> {
         T t ;
         try {
             transaction.begin();
-            t = (T) session.load(entityClass,id);
+            t = session.load(entityClass,id);
             session.delete(t);
             transaction.commit();
         } catch (HibernateException e) {
