@@ -1,7 +1,7 @@
 
-package com.academy.course.dto;
+package com.academy.course;
 
-import com.academy.course.HibernateUtil;
+import com.academy.course.dto.Car;
 import org.hibernate.Session;
 
 

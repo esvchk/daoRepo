@@ -18,7 +18,8 @@ public class CustomNamingStrategy implements PhysicalNamingStrategy {
 
     @Override
     public Identifier toPhysicalTableName(Identifier identifier, JdbcEnvironment jdbcEnvironment) {
-        return new Identifier("T_" + identifier.getText(),identifier.isQuoted());
+//        return new Identifier("T_" + identifier.getText(),identifier.isQuoted());
+        return new Identifier(identifier.getText(),identifier.isQuoted());
     }
 
     @Override
@@ -28,6 +29,7 @@ public class CustomNamingStrategy implements PhysicalNamingStrategy {
 
     @Override
     public Identifier toPhysicalColumnName(Identifier identifier, JdbcEnvironment jdbcEnvironment) {
-        return new Identifier("F_" + identifier.getText(),identifier.isQuoted());
+//        return new Identifier("F_" + identifier.getText(),identifier.isQuoted());
+        return new Identifier(identifier.getText(),identifier.isQuoted());
     }
 }
