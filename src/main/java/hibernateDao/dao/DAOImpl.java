@@ -10,9 +10,7 @@ import java.io.Serializable;
 
 
 public class DAOImpl<T> implements DAO<T> {
-    private final Session session = HibernateSession.getSession();
-    private final Transaction transaction = session.getTransaction();
-    Class<T> entityClass;
+    private Class<?> entityClass;
 
     public DAOImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -20,66 +18,44 @@ public class DAOImpl<T> implements DAO<T> {
 
     @Override
     public T save(T entity)  {
-        try {
+        try(Session session1 = HibernateSession.getSession()) {
+            Transaction transaction = session1.getTransaction();
             transaction.begin();
-            session.save(entity);
+            session1.persist(entity);
             transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-        } finally {
-            HibernateSession.close();
         }
         return entity;
     }
 
     @Override
     public T get(Serializable id)  {
-        T t = null;
-        try {
-            transaction.begin();
-            t = session.get(entityClass,id);
-            transaction.commit();
-        } catch (HibernateException e){
-            transaction.rollback();
-        } finally {
-            HibernateSession.close();
+        T t;
+        try (Session session1 = HibernateSession.getSession()){
+            t = (T) session1.get(entityClass,id);
         }
         return t;
     }
 
     @Override
     public void update(T entity)  {
-        try {
+        try (Session session1 = HibernateSession.getSession()){
+            Transaction transaction = session1.getTransaction();
             transaction.begin();
-            session.saveOrUpdate(entity);
+            session1.saveOrUpdate(entity);
             transaction.commit();
-        } catch (HibernateException e){
-            transaction.rollback();
-        } finally {
-            HibernateSession.close();
         }
     }
 
     @Override
     public Integer delete(Serializable id) {
         T t ;
-        try {
+        try (Session session1 = HibernateSession.getSession()){
+            Transaction transaction = session1.getTransaction();
             transaction.begin();
-            t = session.load(entityClass,id);
-            session.delete(t);
+            t = (T) session1.load(entityClass,id);
+            session1.delete(t);
             transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-        } finally {
-            HibernateSession.close();
         }
         return (Integer) id;
-    }
-
-    @Override
-    public String toString() {
-        return "DAOImpl{" +
-                "session=" + session +
-                '}';
     }
 }
