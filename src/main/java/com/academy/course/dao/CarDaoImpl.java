@@ -28,7 +28,7 @@ public class CarDaoImpl implements CarDao {
 
 
     @Override
-    public Car get(Serializable id) throws SQLException {
+ public Car get(Serializable id) throws SQLException {
         Car car = new Car();
         try (Connection connection = Connector.getConnection();
              Statement statement = connection.createStatement()) {
@@ -44,10 +44,22 @@ public class CarDaoImpl implements CarDao {
     }
 
 
+
+
+
+
+
+
+
+
     @Override
     public void update(Car car) throws SQLException {
 
     }
+
+
+
+
 
     @Override
     public int delete(Serializable id) throws SQLException {
