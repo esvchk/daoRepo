@@ -5,6 +5,7 @@ import com.academy.course.hibernateDao.dao.CarDaoImpl;
 import com.academy.course.hibernateDao.dao.DAO;
 import com.academy.course.hibernateDao.dao.DAOImpl;
 import com.academy.course.hibernateDao.model.Car;
+import com.academy.course.hibernateDao.session.HibernateSession;
 
 import java.sql.SQLException;
 
@@ -16,5 +17,7 @@ public class Main {
                 .name("Skyline")
                 .build();
         dao.save(car);
+
+        HibernateSession.close();
     }
 }
