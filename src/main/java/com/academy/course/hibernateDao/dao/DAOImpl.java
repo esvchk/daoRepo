@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 
 public class DAOImpl<T> implements DAO<T> {
-    private Class<?> entityClass;
+    private Class<T> entityClass;
 
     public DAOImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -30,7 +30,7 @@ public class DAOImpl<T> implements DAO<T> {
     public T get(Serializable id)  {
         T t;
         try (Session session1 = HibernateSession.getSession()){
-            t = (T) session1.get(entityClass,id);
+            t = session1.get(entityClass,id);
         }
         return t;
     }
@@ -51,7 +51,7 @@ public class DAOImpl<T> implements DAO<T> {
         try (Session session1 = HibernateSession.getSession()){
             Transaction transaction = session1.getTransaction();
             transaction.begin();
-            t = (T) session1.load(entityClass,id);
+            t = session1.load(entityClass,id);
             session1.delete(t);
             transaction.commit();
         }
