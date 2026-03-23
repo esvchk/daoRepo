@@ -1,0 +1,125 @@
+[INFO      ] 2026-03-23 11:47:27.000 [main] Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+[WARN      ] 2026-03-23 11:47:27.110 [main] LocalXmlResourceResolver - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[INFO      ] 2026-03-23 11:47:27.254 [main] JavaReflectionManager - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN      ] 2026-03-23 11:47:27.324 [main] ConnectionProviderInitiator - HHH000022: c3p0 properties were encountered, but the c3p0 provider class was not found on the classpath; these properties are going to be ignored.
+[WARN      ] 2026-03-23 11:47:27.325 [main] DriverManagerConnectionProviderImpl - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO      ] 2026-03-23 11:47:27.328 [main] DriverManagerConnectionProviderImpl - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/car_shop]
+[INFO      ] 2026-03-23 11:47:27.328 [main] DriverManagerConnectionProviderImpl - HHH10001001: Connection properties: {user=root, password=****}
+[INFO      ] 2026-03-23 11:47:27.328 [main] DriverManagerConnectionProviderImpl - HHH10001003: Autocommit mode: false
+[INFO      ] 2026-03-23 11:47:27.330 [main] DriverManagerConnectionProviderImpl$PooledConnections - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO      ] 2026-03-23 11:47:27.564 [main] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO      ] 2026-03-23 11:47:27.854 [main] DdlTransactionIsolatorNonJtaImpl - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3421debd] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[WARN      ] 2026-03-23 11:47:27.906 [main] ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table people (
+       id integer not null auto_increment,
+        address varchar(255),
+        age integer,
+        dateOfBirthday date,
+        dateTimeCreate datetime,
+        letter varchar(255),
+        passport varchar(255),
+        salary double precision,
+        timeToLunch time,
+        primary key (id)
+    ) type=MyISAM" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table people (
+       id integer not null auto_increment,
+        address varchar(255),
+        age integer,
+        dateOfBirthday date,
+        dateTimeCreate datetime,
+        letter varchar(255),
+        passport varchar(255),
+        salary double precision,
+        timeToLunch time,
+        primary key (id)
+    ) type=MyISAM" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:581) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:526) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:293) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:74) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:123) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:196) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:728) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:746) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at hibernateDao.session.HibernateSession.<clinit>(HibernateSession.java:10) [classes/:?]
+	at hibernateDao.dao.CarDaoImpl.save(CarDaoImpl.java:37) [classes/:?]
+	at hibernateDao.dao.CarDaoImpl.save(CarDaoImpl.java:17) [classes/:?]
+	at hibernateDao.Main.main(Main.java:35) [classes/:?]
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'type=MyISAM' at line 12
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:839) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:687) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	... 16 more
+[INFO      ] 2026-03-23 11:47:27.912 [main] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO      ] 2026-03-23 11:47:34.912 [main] Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+[WARN      ] 2026-03-23 11:47:35.029 [main] LocalXmlResourceResolver - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[INFO      ] 2026-03-23 11:47:35.167 [main] JavaReflectionManager - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN      ] 2026-03-23 11:47:35.238 [main] ConnectionProviderInitiator - HHH000022: c3p0 properties were encountered, but the c3p0 provider class was not found on the classpath; these properties are going to be ignored.
+[WARN      ] 2026-03-23 11:47:35.240 [main] DriverManagerConnectionProviderImpl - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO      ] 2026-03-23 11:47:35.243 [main] DriverManagerConnectionProviderImpl - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/car_shop]
+[INFO      ] 2026-03-23 11:47:35.244 [main] DriverManagerConnectionProviderImpl - HHH10001001: Connection properties: {user=root, password=****}
+[INFO      ] 2026-03-23 11:47:35.244 [main] DriverManagerConnectionProviderImpl - HHH10001003: Autocommit mode: false
+[INFO      ] 2026-03-23 11:47:35.245 [main] DriverManagerConnectionProviderImpl$PooledConnections - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO      ] 2026-03-23 11:47:35.494 [main] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO      ] 2026-03-23 11:47:35.786 [main] DdlTransactionIsolatorNonJtaImpl - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3421debd] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[WARN      ] 2026-03-23 11:47:35.841 [main] ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table people (
+       id integer not null auto_increment,
+        address varchar(255),
+        age integer,
+        dateOfBirthday date,
+        dateTimeCreate datetime,
+        letter varchar(255),
+        passport varchar(255),
+        salary double precision,
+        timeToLunch time,
+        primary key (id)
+    ) type=MyISAM" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table people (
+       id integer not null auto_increment,
+        address varchar(255),
+        age integer,
+        dateOfBirthday date,
+        dateTimeCreate datetime,
+        letter varchar(255),
+        passport varchar(255),
+        salary double precision,
+        timeToLunch time,
+        primary key (id)
+    ) type=MyISAM" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:581) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:526) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:293) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:74) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:123) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:196) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:728) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:746) [hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at hibernateDao.session.HibernateSession.<clinit>(HibernateSession.java:10) [classes/:?]
+	at hibernateDao.dao.CarDaoImpl.save(CarDaoImpl.java:37) [classes/:?]
+	at hibernateDao.dao.CarDaoImpl.save(CarDaoImpl.java:17) [classes/:?]
+	at hibernateDao.Main.main(Main.java:34) [classes/:?]
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'type=MyISAM' at line 12
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:839) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:687) ~[mysql-connector-j-9.6.0.jar:9.6.0]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	... 16 more
+[INFO      ] 2026-03-23 11:47:35.848 [main] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO      ] 2026-03-23 11:47:35.915 [main] CarDaoImpl - Saving car Car(id=4, name=GT, type=Ford)

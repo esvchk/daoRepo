@@ -1,4 +1,4 @@
-package hibernateDao.dao;
+package hibernateDao.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +16,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
+@Builder
 @Entity(name = "people")
 public class User implements Serializable {
 
@@ -39,4 +40,6 @@ public class User implements Serializable {
     private LocalTime timeToLunch;
     @Column(name = "letter")
     private String letter;
+
+
 }

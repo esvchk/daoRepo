@@ -1,6 +1,7 @@
-package hibernateDao.dao;
+package hibernateDao.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table
+@Builder
 public class Car {
 
     @Id
@@ -22,8 +24,5 @@ public class Car {
     @Column(name = "type")
     private String type;
 
-    public Car(String name, String type) {
-        this.name = name;
-        this.type = type;
-    }
+
 }

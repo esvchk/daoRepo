@@ -1,9 +1,7 @@
 package hibernateDao;
 
-import hibernateDao.dao.Car;
 import hibernateDao.dao.DAO;
 import hibernateDao.dao.DAOImpl;
-import hibernateDao.dao.User;
 
 import java.sql.SQLException;
 
