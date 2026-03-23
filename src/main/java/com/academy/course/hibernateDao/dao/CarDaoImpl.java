@@ -14,11 +14,13 @@ import org.hibernate.query.Query;
 import java.io.Serializable;
 import java.util.List;
 
-public class CarDaoImpl implements CarDAO {
+public class CarDaoImpl extends DAOImpl<Car> implements CarDAO {
 
     private static final Logger log = LogManager.getLogger(CarDaoImpl.class);
 
-
+    public CarDaoImpl(Class<Car> entityClass) {
+        super(entityClass);
+    }
     @Override
     public List<Car> findByType(String type) {
         try (Session session = HibernateSession.getSession()) {
