@@ -1,8 +1,8 @@
-package hibernateDao.dao;
+package com.academy.course.hibernateDao.dao;
 
 
-import hibernateDao.model.Car;
-import hibernateDao.session.HibernateSession;
+import com.academy.course.hibernateDao.model.Car;
+import com.academy.course.hibernateDao.session.HibernateSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -54,7 +54,7 @@ public class CarDaoImpl implements CarDAO {
             log.info("Receive by id " + id + " car " + car);
             return car;
         } catch (HibernateException e) {
-            log.error("Cannot receive by id" + id);
+            log.error("Cannot receive by id " + id);
         }
         return null;
     }

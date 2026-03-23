@@ -1,6 +1,6 @@
-package hibernateDao.dao;
+package com.academy.course.hibernateDao.dao;
 
-import hibernateDao.model.User;
+import com.academy.course.hibernateDao.model.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package hibernateDao.session;
+package com.academy.course.hibernateDao.session;
 
 
 import org.hibernate.Session;

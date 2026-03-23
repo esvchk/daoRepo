@@ -1,6 +1,6 @@
-package hibernateDao.dao;
+package com.academy.course.hibernateDao.dao;
 
-import hibernateDao.model.Car;
+import com.academy.course.hibernateDao.model.Car;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package hibernateDao.dao;
+package com.academy.course.hibernateDao.dao;
 
 import java.io.Serializable;
 import java.sql.SQLException;

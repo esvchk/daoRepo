@@ -1,8 +1,8 @@
-package hibernateDao.dao;
+package com.academy.course.hibernateDao.dao;
 
 
-import hibernateDao.model.User;
-import hibernateDao.session.HibernateSession;
+import com.academy.course.hibernateDao.model.User;
+import com.academy.course.hibernateDao.session.HibernateSession;
 
 
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package hibernateDao.model;
+package com.academy.course.hibernateDao.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

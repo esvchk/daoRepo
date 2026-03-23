@@ -1,7 +1,6 @@
-package hibernateDao.dao;
+package com.academy.course.hibernateDao.dao;
 
-import hibernateDao.session.HibernateSession;
-import org.hibernate.HibernateException;
+import com.academy.course.hibernateDao.session.HibernateSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
