@@ -18,6 +18,7 @@ public class CarDaoImpl implements CarDAO {
 
     private static final Logger log = LogManager.getLogger(CarDaoImpl.class);
 
+
     @Override
     public List<Car> findByType(String type) {
         try (Session session = HibernateSession.getSession()) {
