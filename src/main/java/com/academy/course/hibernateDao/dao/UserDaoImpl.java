@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDAO {
             Query<User> query = session.createQuery
                     ("SELECT u FROM people u WHERE u.address = :address", User.class);
             query.setParameter("address", address);
-            log.info("Reading users by " + address);
+            log.info("Reading users by {}", address);
             return query.getResultList();
         } catch (HibernateException e) {
             log.error("Cannot find users by address");
@@ -40,10 +40,10 @@ public class UserDaoImpl implements UserDAO {
             Transaction transaction = session.getTransaction();
             transaction.begin();
             session.persist(entity);
-            log.info("Saving user " + entity);
+            log.info("Saving user {}", entity);
             transaction.commit();
         } catch (HibernateException e) {
-            log.error("Cannot save entity " + entity);
+            log.error("Cannot save entity {}", entity);
         }
         return entity;
     }
@@ -53,10 +53,10 @@ public class UserDaoImpl implements UserDAO {
         User user;
         try (Session session = HibernateSession.getSession()) {
             user = session.get(User.class, id);
-            log.info("Receive by id " + id + " user " + user);
+            log.info("Receive by id {} user {}", id, user);
             return user;
         } catch (HibernateException e) {
-            log.error("Cannot find by " + id);
+            log.error("Cannot find by {}", id);
         }
         return null;
     }
@@ -68,9 +68,9 @@ public class UserDaoImpl implements UserDAO {
             transaction.begin();
             session.saveOrUpdate(entity);
             transaction.commit();
-            log.info("Update user " + entity);
+            log.info("Update user {}", entity);
         } catch (HibernateException e) {
-            log.error("Cannot update entity " + entity);
+            log.error("Cannot update entity {}", entity);
         }
     }
 
@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDAO {
             user = session.load(User.class, id);
             session.delete(user);
             transaction.commit();
-            log.info("Delete user " + user + " by id " + id);
+            log.info("Delete user{} by id {}", user, id);
         }
         return user.getId();
     }

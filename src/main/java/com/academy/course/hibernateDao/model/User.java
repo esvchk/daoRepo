@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -18,7 +17,7 @@ import java.time.LocalTime;
 @Table
 @Builder
 @Entity(name = "people")
-public class User implements Serializable {
+public class User {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

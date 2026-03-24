@@ -21,16 +21,17 @@ public class CarDaoImpl extends DAOImpl<Car> implements CarDAO {
     public CarDaoImpl(Class<Car> entityClass) {
         super(entityClass);
     }
+
     @Override
     public List<Car> findByType(String type) {
         try (Session session = HibernateSession.getSession()) {
-             Query<Car> query = session.createQuery
+            Query<Car> query = session.createQuery
                     ("SELECT c from Car c WHERE c.type = :type", Car.class);
-             query.setParameter("type",type);
-             log.info("Find by type " + type + "cars" + query );
-             return query.getResultList();
+            query.setParameter("type", type);
+            log.info("Find by type {} cars {}", type, query);
+            return query.getResultList();
         } catch (HibernateException e) {
-            log.error("Cannot find by type " + type);
+            log.error("Cannot find by type {}", type);
         }
         return null;
     }
@@ -42,9 +43,9 @@ public class CarDaoImpl extends DAOImpl<Car> implements CarDAO {
             transaction.begin();
             session.persist(entity);
             transaction.commit();
-            log.info("Saving car " + entity);
-        }catch (HibernateException e) {
-            log.error("Cannot save car " + entity);
+            log.info("Saving car {}", entity);
+        } catch (HibernateException e) {
+            log.error("Cannot save car {}", entity);
         }
         return entity;
     }
@@ -54,10 +55,10 @@ public class CarDaoImpl extends DAOImpl<Car> implements CarDAO {
         Car car;
         try (Session session = HibernateSession.getSession()) {
             car = session.get(Car.class, id);
-            log.info("Receive by id " + id + " car " + car);
+            log.info("Receive by id {} car {}", id, car);
             return car;
         } catch (HibernateException e) {
-            log.error("Cannot receive by id " + id);
+            log.error("Cannot receive by id {}", id);
         }
         return null;
     }
@@ -69,9 +70,9 @@ public class CarDaoImpl extends DAOImpl<Car> implements CarDAO {
             transaction.begin();
             session.saveOrUpdate(entity);
             transaction.commit();
-            log.info("Update car " + entity);
+            log.info("Update car {}", entity);
         } catch (HibernateException e) {
-            log.error("Cannot update car " + entity);
+            log.error("Cannot update car {}", entity);
         }
 
     }
@@ -85,10 +86,10 @@ public class CarDaoImpl extends DAOImpl<Car> implements CarDAO {
             car = session.load(Car.class, id);
             session.delete(car);
             transaction.commit();
-            log.info("Delete by id " + id + " car " + car);
+            log.info("Delete by id {} car {}", id, car);
             return car.getId();
         } catch (HibernateException e) {
-            log.error("Cannot delete by id " + id);
+            log.error("Cannot delete by id {}", id);
         }
         return null;
     }
