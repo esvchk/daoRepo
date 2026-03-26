@@ -28,6 +28,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Entities -->
-        <mapping class="com.academy.course.dto.Car"/>
+
     </session-factory>
 </hibernate-configuration>

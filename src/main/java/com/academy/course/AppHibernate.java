@@ -1,8 +1,6 @@
 
 package com.academy.course;
 
-import com.academy.course.dto.Car;
-import com.academy.course.hierarchy.Address;
 import com.academy.course.hierarchy.Employee1;
 import com.academy.course.hierarchy.Person1;
 import com.academy.course.hierarchy.Student;
