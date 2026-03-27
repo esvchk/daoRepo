@@ -30,5 +30,6 @@
         <!-- Entities -->
         <mapping class="com.academy.course.hibernateDao.model.Car"/>
         <mapping class="com.academy.course.hibernateDao.model.User"/>
+
     </session-factory>
 </hibernate-configuration>
