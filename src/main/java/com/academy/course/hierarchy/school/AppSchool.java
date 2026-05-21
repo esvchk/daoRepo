@@ -1,6 +1,6 @@
 package com.academy.course.hierarchy.school;
 
-import com.academy.course.HibernateUtil;
+import com.academy.course.utils.HibernateUtil;
 
 import javax.persistence.EntityManager;
 

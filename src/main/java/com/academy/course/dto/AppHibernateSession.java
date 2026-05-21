@@ -1,6 +1,6 @@
 package com.academy.course.dto;
 
-import com.academy.course.HibernateUtil;
+import com.academy.course.utils.HibernateUtil;
 import com.academy.course.dao.HibernateSession;
 import org.hibernate.Session;
 

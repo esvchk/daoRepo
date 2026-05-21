@@ -56,7 +56,6 @@ public class EmployeeDetails implements Serializable {
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
                 ", street='" + street + '\'' +
-                ", employee=" + employee +
                 '}';
     }
 }
