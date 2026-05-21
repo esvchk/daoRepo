@@ -1,6 +1,7 @@
 package com.academy.course.spring;
 
 import com.academy.course.spring.autowired.MyConfiguration;
+import com.academy.course.spring.autowired.MyService;
 import com.academy.course.spring.autowired.PersonNew;
 import lombok.Getter;
 import org.springframework.beans.factory.BeanNameAware;
@@ -19,13 +20,15 @@ public class MainWithAnnotationConfig implements BeanNameAware {
     public static void main(String[] args) {
 //        ApplicationContext context = new AnnotationConfigApplicationContext(MainWithAnnotationConfig.class);
 
-//        ApplicationContext context = new AnnotationConfigApplicationContext("by.city.study.course" +
-//                ".springConfig");
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.academy.course.spring.autowired");
 
         AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext(MyConfiguration.class);
 
         PersonNew personNew = context1.getBean("personNew",PersonNew.class);
         System.out.println(personNew);
+
+        MyService myService = context1.getBean("MyService",MyService.class);
+        System.out.println(myService.print());
 
 //        MainWithAnnotationConfig bean = contextgetBean(MainWithAnnotationConfig.class);
 //        System.out.println(bean.getBeanName());

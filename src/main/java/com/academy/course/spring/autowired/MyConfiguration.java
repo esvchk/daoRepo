@@ -13,6 +13,7 @@ import org.springframework.context.annotation.*;
                 )
         }
 )
+@EnableAspectJAutoProxy
 @Import(ConfigSecond.class)
 public class MyConfiguration {
     @Bean(name = "personNew")
